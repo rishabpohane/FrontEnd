@@ -20,7 +20,12 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="ArxPaxGauge2.ctl" Type="VI" URL="../ArxPaxGauge2.ctl"/>
+		<Item Name="BlockDiagramControlEnum.ctl" Type="VI" URL="../BlockDiagramControlEnum.ctl"/>
+		<Item Name="CommunicationStatus.ctl" Type="VI" URL="../CommunicationStatus.ctl"/>
 		<Item Name="Illini Hyperloop GUI v3.vi" Type="VI" URL="../Illini Hyperloop GUI v3.vi"/>
+		<Item Name="readTCPDataIn.vi" Type="VI" URL="../readTCPDataIn.vi"/>
+		<Item Name="StageEnum.ctl" Type="VI" URL="../StageEnum.ctl"/>
+		<Item Name="UpdateCommunicationStatus.vi" Type="VI" URL="../UpdateCommunicationStatus.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Attitude Indicator.xctl" Type="XControl" URL="/&lt;vilib&gt;/robotics/Controls/Attitude Indicator/Attitude Indicator.xctl"/>
