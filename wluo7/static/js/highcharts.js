@@ -27,7 +27,7 @@ function requestData() {
         success: function(point) {
             var series = charts[current].series[0];
             // shift if the series is longer than 20
-            var shift = series.data.length > 20;
+            var shift = series.data.length > 35;
 
             // add the point in the form of [time in miliseconds, y-axis value]
             charts[current].series[0].addPoint(point, true, shift);
@@ -38,10 +38,19 @@ function requestData() {
             // call it again after half of a second
             setTimeout(requestData, 500);
         },
+        error: function(jqXHR, textStatus, errorThrown){
+            // move on to the next chart to update
+            current = current + 1;
+
+            // report fail message
+            console.log(testStatus)
+        },
         cache: false
     });
 }
 
+
+// add a new highchart
 function addChart(chartName, dataUrl, htmlTag) {
     var chart = new Highcharts.Chart({
         chart: {
