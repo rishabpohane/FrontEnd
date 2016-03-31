@@ -13,12 +13,21 @@ from TCPclient import sent_request
 
 app = Flask(__name__)
 
-@app.route('/live-data')
-def live_data():
+@app.route('/gyro-data')
+def gyro_data():
 	data = sent_request('GET gyroscope')
 	data = json.loads(data)
-	data = data[0]
-	data = [time() * 1000, int(data)]
+	data = [time() * 1000, int(data[0])]
+	print data
+	response = make_response(json.dumps(data))
+	response.content_type = 'application/json'
+	return response
+
+@app.route('/acce-data')
+def acce_data():
+	data = sent_request('GET accelerometer')
+	data = json.loads(data)
+	data = [time() * 1000, int(data[0])]
 	print data
 	response = make_response(json.dumps(data))
 	response.content_type = 'application/json'

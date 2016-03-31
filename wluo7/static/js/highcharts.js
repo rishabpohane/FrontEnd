@@ -1,24 +1,40 @@
 
 // Global variable for Highchart
-var chart1, chart2;
-
+var charts = [];
+var urls = [];
+var current = 0;
 /**
  * Request data from the server, add it to the graph and set a timeout
  * to request again
  */
 function requestData() {
+
+    // Cycle back to update first chart
+    if (current >= charts.length) {
+        current = 0;
+    }
+
+    // If chart not yet loaded, wait for it to load first
+    if (charts[current] === undefined || urls[current] === undefined) {
+        console.log('Chart not yet loaded, try later.')
+        setTimeout(requestData, 1000);
+        return;
+    }
+
+    // Asychronous call to update data
     $.ajax({
-        url: '/live-data',
+        url: urls[current],
         success: function(point) {
-            var series1 = chart1.series[0];
-            var series2 = chart2.series[0],
+            var series = charts[current].series[0];
             // shift if the series is longer than 20
-            shift1 = series1.data.length > 20;
-            shift2 = series2.data.length > 20; 
+            var shift = series.data.length > 20;
 
             // add the point in the form of [time in miliseconds, y-axis value]
-            chart1.series[0].addPoint(point, true, shift1);
-            chart2.series[0].addPoint(point, true, shift2);
+            charts[current].series[0].addPoint(point, true, shift);
+
+            // process next chart on next call
+            current = current + 1;
+
             // call it again after half of a second
             setTimeout(requestData, 500);
         },
@@ -26,17 +42,17 @@ function requestData() {
     });
 }
 
-function addChart() {
-    chart1 = new Highcharts.Chart({
+function addChart(chartName, dataUrl, htmlTag) {
+    var chart = new Highcharts.Chart({
         chart: {
-            renderTo: 'data-container1',
+            renderTo: htmlTag,
             defaultSeriesType: 'spline',
             events: {
                 load: requestData
             }
         },
         title: {
-            text: 'Live pre-recoreded test data'
+            text: chartName
         },
         xAxis: {
             type: 'datetime',
@@ -57,38 +73,11 @@ function addChart() {
             data: []
         }]
     });
-    chart2 = new Highcharts.Chart({
-        chart: {
-            renderTo: 'data-container2',
-            defaultSeriesType: 'spline',
-            events: {
-                load: requestData
-            }
-        },
-        title: {
-            text: 'Live pre-recoreded test data'
-        },
-        xAxis: {
-            type: 'datetime',
-            tickPixelInterval: 150,
-            maxZoom: 20 * 1000
-        },
-        yAxis: {
-            id: 'y',
-            minPadding: 0.2,
-            maxPadding: 0.2,
-            title: {
-                text: 'Sensor Value',
-                margin: 80
-            }
-        },
-        series: [{
-            name: 'pre-recorded data',
-            data: []
-        }]
-    });
+    charts.push(chart);
+    urls.push(dataUrl);
 }
 
 $(document).ready(function() {
-    addChart();
+    addChart('Live Gyroscope Data', '/gyro-data', 'data-container1');
+    addChart('Live Accelerometer Data', '/acce-data', 'data-container2');
 });
