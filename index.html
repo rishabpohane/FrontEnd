@@ -1,5 +1,10 @@
 <html>
+<head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 <script src="https://code.highcharts.com/stock/highstock.js"></script>
 <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
@@ -7,11 +12,47 @@
 
 <script src="js/velocity.js"></script>
 
+      
+<script>
+  
+$(function() {
+              
+$( "#draggable" ).draggable();
+//$( "#draggable" ).resizable();
+});
+</script>
+  
+</head>
+ 
+<body>
+       <div id="draggable">
+<div  id="velocity" style="height: 400px; min-width: 510px"></div>
+                   </div>
+                   </body>
+
+
+
+
+
+
 <fieldset class="list">
     <label> Velocity</label>
     <input id="velocityEnabled" type="checkbox" />
+    <label> Acceleration </label>
+    <input id="accelerationEnabled" type="checkbox"/>
+     <label> Temprature</label>
+    <input id="tempratureEnabled" type="checkbox" />
+    <label> Gyroscope </label>
+    <input id="gyroscopeEnabled" type="checkbox"/>
+     <label> Pressure</label>
+    <input id="pressureEnabled" type="checkbox" />
+    <label> Height Sensor </label>
+    <input id="heightEnabled" type="checkbox"/>
+     <label> Voltage</label>
+    <input id="voltageEnabled" type="checkbox" />
+    <label> RPM </label>
+    <input id="rpmEnabled" type="checkbox"/>
+    
 </fieldset>
 
-
-<div id="velocity" style="height: 400px; min-width: 510px"></div>
 </html>
