@@ -10,49 +10,82 @@
 <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 
 
-<script src="js/velocity.js"></script>
 
+<script src="js/velocity.js"></script>
+<script src="js/acceleration.js"></script>
+
+<script src="js/temprature.js"></script>
+<script src="js/gyroscope.js"></script>
+
+<script src="js/height.js"></script>
+<script src="js/voltage.js"></script>
       
 <script>
   
 $(function() {
               
-$( "#draggable" ).draggable();
+$( ".draggable" ).draggable();
 //$( "#draggable" ).resizable();
 });
 </script>
   
 </head>
- 
-<body>
-       <div id="draggable">
-<div  id="velocity" style="height: 400px; min-width: 510px"></div>
-                   </div>
-                   </body>
-
-
-
-
 
 
 <fieldset class="list">
-    <label> Velocity</label>
     <input id="velocityEnabled" type="checkbox" />
-    <label> Acceleration </label>
+    <label> Velocity</label>
+
     <input id="accelerationEnabled" type="checkbox"/>
-     <label> Temprature</label>
-    <input id="tempratureEnabled" type="checkbox" />
-    <label> Gyroscope </label>
-    <input id="gyroscopeEnabled" type="checkbox"/>
-     <label> Pressure</label>
-    <input id="pressureEnabled" type="checkbox" />
-    <label> Height Sensor </label>
-    <input id="heightEnabled" type="checkbox"/>
-     <label> Voltage</label>
-    <input id="voltageEnabled" type="checkbox" />
-    <label> RPM </label>
-    <input id="rpmEnabled" type="checkbox"/>
+    <label> Acceleration </label>
     
+    <input id="tempratureEnabled" type="checkbox" />
+    <label> Temprature</label>
+
+    
+    <input id="gyroscopeEnabled" type="checkbox"/>
+    <label> Gyroscope </label>
+
+    <input id="pressureEnabled" type="checkbox" />
+    <label> Pressure</label>
+
+    <input id="heightEnabled" type="checkbox"/>
+    <label> Height Sensor </label>
+
+    <input id="voltageEnabled" type="checkbox" />
+    <label> Voltage</label>
+
+    
+    <input id="rpmEnabled" type="checkbox"/>
+    <label> RPM </label>
+
 </fieldset>
+ 
+<body>
+       <div class="draggable">
+<div  id="velocity" style="height: 400px; min-width: 510px"></div>
+        </div>
+        
+
+        <div class="draggable">
+<div id="acceleration" style="height:400px; mix-width:510px"></div>
+        </div>
+
+<div class="draggable">
+<div id="temprature" style="height:400px; mix-width:510px"></div>
+        </div>
+<div class="draggable">
+<div id="gyroscope" style="height:400px; mix-width:510px"></div>
+        </div>
+<div class="draggable">
+<div id="height" style="height:400px; mix-width:510px"></div>
+        </div>
+<div class="draggable">
+<div id="voltage" style="height:400px; mix-width:510px"></div>
+        </div>
+
+
+
+                   </body>
 
 </html>
