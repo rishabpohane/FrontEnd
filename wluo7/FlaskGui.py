@@ -5,11 +5,11 @@ import json
 import sys
 
 # BackEnd interface location on Gary's MacBook, need to change if using your own
-BACKEND_LOCATION = '/Users/kaluo/Documents/Research/Hyperloop/IlliniHyperloopComputing/BackEnd/wluo7/GuiClient' 
+BACKEND_LOCATION = '/Users/kaluo/Documents/Research/Hyperloop/IlliniHyperloopComputing/FrontEnd/wluo7/interface' 
 sys.path.insert(0, BACKEND_LOCATION)
 
 # BacnEnd Interface
-from TCPclient import sent_request
+from TCPRequest import sent_request
 
 app = Flask(__name__)
 
