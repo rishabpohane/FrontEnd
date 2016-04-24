@@ -68,6 +68,7 @@ function addSpline(chartName, dataUrl, htmlTag) {
         chart: {
             renderTo: htmlTag,
             type: 'spline',
+            spacingLeft: 0
            // events: {
         //        load: requestData
         //    }
@@ -82,11 +83,11 @@ function addSpline(chartName, dataUrl, htmlTag) {
         },
         yAxis: {
             id: 'y',
-            minPadding: 0.2,
-            maxPadding: 0.2,
+            minPadding: 0.0,
+            maxPadding: 0.0,
             title: {
-                text: 'Sensor Value',
-                margin: 80
+                text: 'Senslue',
+                margin: 15
             }
         },
         series: [{
