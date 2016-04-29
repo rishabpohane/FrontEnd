@@ -123,7 +123,7 @@
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToProject</Property>
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{9572037B-313B-4015-9553-40B50AD7AB71}</Property>
-				<Property Name="Bld_version.build" Type="Int">7</Property>
+				<Property Name="Bld_version.build" Type="Int">10</Property>
 				<Property Name="Bld_version.major" Type="Int">1</Property>
 				<Property Name="Destination[0].destName" Type="Str">testapp.exe</Property>
 				<Property Name="Destination[0].path" Type="Path">../builds/HyperloopGUIBuild_Windows/testapp.exe</Property>
@@ -134,7 +134,7 @@
 				<Property Name="Destination[1].path" Type="Path">../builds/HyperloopGUIBuild_Windows/data</Property>
 				<Property Name="Destination[1].path.type" Type="Str">relativeToProject</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
-				<Property Name="Source[0].itemID" Type="Str">{F26951FB-D55B-4373-B1BD-00FC8D801BB7}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{1FF01AF9-2E55-49B9-8D3B-6E8A429FAF64}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/Illini Hyperloop GUI v3.2.vi</Property>
