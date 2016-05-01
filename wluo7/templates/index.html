@@ -7,10 +7,8 @@
     <title>Flask Highcharts Live Data Demo</title>
 
           <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/static/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+    <script src="/static/jquery-1.12.3/jquery-1.12.3.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -25,11 +23,11 @@
           <a class="navbar-brand" href="/">Illini Hyperloop</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-{#        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">#}
-{#          <ul class="nav navbar-nav">#}
-{#            <li><a href="#">A link</a></li>#}
-{#          </ul>#}
-{#        </div><!-- /.navbar-collapse -->#}
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/#">A link</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
       </div>
     </div>
 
@@ -53,25 +51,16 @@
           <div class="col-sm-3" id="data-container6"></div>
           <div class="col-sm-3" id="data-container7"></div>
       </div>
-    </div>
-
-      <script>
-      $(function() {
-        $( "#resizable" ).resizable();
-      });
-      </script>
-      
-      
     </div> <!-- /container -->
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="http://code.highcharts.com/highcharts-more.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
 
-    
-    <script src="/static/js/jquery.js"></script>
-    <script src="/static/js/highcharts.js"></script>
+      
+    <script src="/static/highcharts/highcharts.js"></script>
+    <script src="/static/highcharts/highcharts-more.js"></script>
+
+    <script src="/static/js/docready.js"></script>
+    <script src="/static/js/addcharts.js"></script>
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="/static/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
   </body>
 </html>

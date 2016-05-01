@@ -13,26 +13,15 @@ from TCPRequest import sent_request
 
 app = Flask(__name__)
 
-@app.route('/gyro-data')
-def gyro_data():
-	data = sent_request('GET gyroscope')
+@app.route('/data/<sensor>')
+def sensor_data(sensor):
+	data = sent_request('GET '+sensor)
 	data = json.loads(data)
 	data = [time() * 1000, int(data[0])]
 	print data
 	response = make_response(json.dumps(data))
 	response.content_type = 'application/json'
 	return response
-
-@app.route('/acce-data')
-def acce_data():
-	data = sent_request('GET accelerometer')
-	data = json.loads(data)
-	data = [time() * 1000, int(data[0])]
-	print data
-	response = make_response(json.dumps(data))
-	response.content_type = 'application/json'
-	return response
-
 
 @app.route("/")
 def index_page():
