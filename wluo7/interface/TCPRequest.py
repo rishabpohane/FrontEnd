@@ -4,8 +4,9 @@ import json
 import socket
 import time
 import re
+import select
 
-TCP_IP = '127.0.0.1' # Change to beaglebone server IP
+TCP_IP = '192.168.1.200' # Change to beaglebone server IP
 TCP_PORT = 5005
 BUFFER_SIZE = 1024
 
@@ -13,17 +14,23 @@ connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM);
 connection.connect((TCP_IP, TCP_PORT))
 
 def sent_request(request):
-    
+    print "Senting request to server: "+request 
 	# Sent request
     connection.send(request)
 	
+    print "Wait for response from back-end server..."
     # Retrieve result
-    data = connection.recv(BUFFER_SIZE)
+    while True:
+        connection.setblocking(0)
+        ready = select.select([connection],[],[],1.0)
+        if ready[0]:
+            data = connection.recv(BUFFER_SIZE)
+            break
+        else:
+            print "No response, re-sending request..."
+            connection.send(request)
+
+    print "Retrieved response from server, processing in front-end."
 
 	# Parse retrieved result
-    match = re.search(r'(\d+)', data)
-    if match:
-        value = match.group(1)
-    else:
-        value = 0
-    return json.dumps([value])
+    return json.dumps([float(data)])

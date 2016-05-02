@@ -18,7 +18,7 @@ function requestData() {
     // If chart not yet loaded, wait for it to load first
     if (charts[current] === undefined || urls[current] === undefined) {
         console.log('Chart not yet loaded, try later.')
-        setTimeout(requestData, 1000);
+        setTimeout(requestData, 100);
         return;
     }
 
@@ -27,11 +27,10 @@ function requestData() {
         url: urls[current],
         success: function(point) {
             if (charts[current] === undefined || charts[current].series === undefined) {
-                setTimeout(requestData, 100);
+                console.log('Chart data series not yet loaded, try later.')
+                setTimeout(requestData, 50);
                 return;
             }
-            
-            console.log(point[1]);
             
             var series = charts[current].series[0];
             // shift if the series is longer than 20
@@ -48,14 +47,15 @@ function requestData() {
             current = current + 1;
 
             // call it again after half of a second
-            setTimeout(requestData, 100);
+            setTimeout(requestData, 50);
         },
         error: function(jqXHR, textStatus, errorThrown){
+            console.log("AJAX update failed.")
             // move on to the next chart to update
             current = current + 1;
-
+            setTimeout(requestData, 100);
             // report fail message
-            console.log(testStatus)
+            console.log(errorThrown)
         },
         cache: false
     });
@@ -192,6 +192,83 @@ function addGauge(chartName, dataUrl, htmlTag) {
             }
         }]
     });
+    charts.push(chart);
+    urls.push(dataUrl);
+}
+
+function addMeter(chartName, dataUrl, htmlTag) {
+    var chart = new Highcharts.Chart({
+         chart: {
+                    type: 'gauge',
+                    renderTo: htmlTag,
+                    plotBorderWidth: 1,
+                    plotBackgroundColor: {
+                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                        stops: [
+                            [0, '#FFF4C6'],
+                            [0.3, '#FFFFFF'],
+                            [1, '#FFF4C6']
+                        ]
+                    },
+                    plotBackgroundImage: null,
+                    height: 200
+                },
+
+                title: {
+                    text: chartName
+                },
+
+                pane: {
+                    startAngle: -80,
+                    endAngle: 80,
+                    background: null,
+                    center: ['50%', '90%'],
+                    size: 180
+                },
+
+                tooltip: {
+                    enabled: false
+                },
+
+                yAxis: {
+                    min: 0,
+                    max: 100,
+                    minorTickPosition: 'outside',
+                    tickPosition: 'outside',
+                    labels: {
+                        rotation: 'auto',
+                        distance: 15
+                    },
+                    plotBands: [{
+                        from: 0,
+                        to: 40,
+                        color: '#C02316',
+                        innerRadius: '100%',
+                        outerRadius: '105%'
+                    }],
+                    pane: 0,
+                    title: {
+                        text: 'Distance Sensor 1',
+                        y: 0
+                    }
+                },
+
+                plotOptions: {
+                    gauge: {
+                        dataLabels: {
+                            enabled: false
+                        },
+                        dial: {
+                            radius: '90%'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Channel A',
+                    data: [-20],
+                    yAxis: 0
+                }]
+    })
     charts.push(chart);
     urls.push(dataUrl);
 }

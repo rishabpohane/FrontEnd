@@ -17,11 +17,17 @@ app = Flask(__name__)
 def sensor_data(sensor):
 	data = sent_request('GET '+sensor)
 	data = json.loads(data)
-	data = [time() * 1000, int(data[0])]
+	data = [time() * 1000, float(data[0])]
 	print data
 	response = make_response(json.dumps(data))
 	response.content_type = 'application/json'
 	return response
+
+@app.route('/sent/<signal>')
+def sent_signal(signal):
+    data = sent_request('POST '+signal)
+    response = make_response(data)
+    return response
 
 @app.route("/")
 def index_page():
